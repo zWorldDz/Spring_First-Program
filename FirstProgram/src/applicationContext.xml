@@ -11,9 +11,26 @@
     <!-- Define your beans here -->
     
  	<bean id="myCoach"
- 		class="com.dstar.firstprogram.BaseballCoach">	 		
+ 		class="com.dstar.firstprogram.BaseballCoach">	 
+ 				<constructor-arg ref="fortune"/>
+ 				
  	</bean>
+	
+	<!--Define Dependency  --> 
+	<bean id="fortune"
+		class="com.dstar.firstprogram.HappyFortune">
+		
+	</bean>
+	<bean id="CricketCoach"
+		class="com.dstar.firstprogram.CricketCoach">
+		
+		<property name="fortune" ref="fortune"></property>
 
+		<property name="email" value="${foo.email}"/>
+		<property name="team" value="${foo.team}" />
+		</bean>
+		
+		<context:property-placeholder location="classpath:sport.properties"/>
     <!--
     <bean id="myCoach"
         class="com.dstar.firstprogram.BaseballCoach">         
